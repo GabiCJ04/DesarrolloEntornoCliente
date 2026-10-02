@@ -20,7 +20,19 @@ Vista de escritorio con la tabla y mi nombre en el menú.
 
 Vista de los tres botones con un ancho de 390 píxeles.
 
-Estas capturas se obtuvieron automáticamente en este equipo. Faltan las capturas manuales del modo móvil de F12, la consola, las alertas en ambos navegadores y VS Code con Live Server.
+![Consola de Chrome](capturas/03-consola-chrome.png)
+
+La consola muestra el userAgent y su aviso de compatibilidad. También aparece un error de seguridad al abrir la página como archivo local; no es el error simulado del botón.
+
+![Alerta del navegador en Chrome](capturas/04-useragent-chrome.png)
+
+El botón «¿Qué navegador soy?» muestra el userAgent de Chrome en una alerta.
+
+![Proyecto abierto en VS Code con Live Preview](capturas/05-vscode-live-preview.png)
+
+La carpeta `tema02` está abierta en VS Code, con el código de `index.html` y la página funcionando en Live Preview.
+
+Las dos primeras capturas se obtuvieron automáticamente y las otras tres se tomaron manualmente. Quedan por documentar las trazas de los tres botones juntas, la alerta de Firefox, la barra de dispositivos de F12 y Live Server.
 
 ## Quién hace qué
 
