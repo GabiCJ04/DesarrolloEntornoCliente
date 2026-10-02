@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navegadores y motores</title>
+
+  <!-- CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Iconos de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+      <a class="navbar-brand text-wrap" href="index.html">Gabriel Cruz Jiménez</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir navegación"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html">Navegadores y motores</a>
+          <a class="nav-link" href="interaccion.html">Interacción</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <div class="row g-4"><div class="col-12">
+      <h1>Navegadores y motores</h1>
+      <p>Comparación de las versiones de escritorio.</p>
+      <table class="table table-striped table-bordered table-sm small text-break align-middle">
+        <caption>Motores de cinco navegadores de escritorio.</caption>
+        <thead class="table-dark"><tr><th scope="col">Navegador</th><th scope="col">Empresa</th><th scope="col">Renderizado</th><th scope="col">JavaScript</th><th scope="col">Chromium</th></tr></thead>
+        <tbody><tr><th scope="row">Chrome</th><td>Google</td><td>Blink</td><td>V8</td><td>Sí</td></tr><tr><th scope="row">Firefox</th><td>Mozilla</td><td>Gecko</td><td>SpiderMonkey</td><td>No</td></tr><tr><th scope="row">Safari</th><td>Apple</td><td>WebKit</td><td>JavaScriptCore</td><td>No</td></tr><tr><th scope="row">Edge</th><td>Microsoft</td><td>Blink</td><td>V8</td><td>Sí</td></tr><tr><th scope="row">Opera</th><td>Opera</td><td>Blink</td><td>V8</td><td>Sí</td></tr></tbody>
+      </table>
+      <h2 class="h4">Por qué comparten motor</h2>
+      <p>Chrome, Edge y Opera comparten Chromium, un proyecto de código abierto.<br>
+      Reutilizar esa base permite aprovechar trabajo común y dedicar recursos a otras funciones.<br>
+      En sus versiones de escritorio utilizan Blink para representar HTML y CSS, y V8 para JavaScript.<br>
+      Firefox queda fuera de Chromium y emplea Gecko y SpiderMonkey.<br>
+      Safari también utiliza una base distinta, con WebKit y JavaScriptCore.<br>
+      Compartir motor facilita la compatibilidad, pero las versiones y las funciones disponibles pueden variar.<br>
+      Por eso, comprobar una web en un solo navegador no garantiza que funcione igual en los demás.</p>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section class="card h-100"><div class="card-body">
+        <h2 class="card-title h4">Compatibilidad de CSS :has()</h2>
+        <p>El selector <code>article:has(img)</code> selecciona los artículos que contienen una imagen.</p>
+        <p>Chrome y Edge lo admiten desde la versión 105, Safari desde la 15.4 y Firefox desde la 121. En Firefox 120 está desactivado por defecto y en Safari 15.3 no está soportado: una regla que lo use no se aplica en esos casos.</p>
+        <p>Es una diferencia entre versiones: las versiones actuales de estos navegadores ya lo admiten.</p>
+        <a href="https://caniuse.com/css-has">Consultar :has() en Can I use</a>
+        <p class="mb-0 mt-2">Fecha de consulta: 2 de octubre de 2026.</p>
+      </div></section>
+    </div>
+    <div class="col-12 col-lg-6">
+      <section><h2 class="h4">En qué navegadores probaría una web</h2>
+      <p>Probaría primero Chrome en ordenador y Android, siguiendo el punto de partida del caso práctico del tema.<br>
+      Después usaría Firefox para comprobar otro motor y Safari en iPhone para revisar WebKit y el uso táctil.<br>
+      Comprobaría el viewport, la lectura de la tabla y los botones en pantallas pequeñas, además de Edge en Windows.<br>
+      Ajustaría el orden final a los dispositivos y navegadores del público del cliente.</p></section>
+    </div>
+    <div class="col-12"><h2 class="h4">Fuentes</h2>
+      <p>Apuntes del tema 2, apartados 2.1, 2.2 y caso práctico 1.</p>
+      <ul><li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Engine/Rendering">MDN: motores de renderizado</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Engine/JavaScript">MDN: motores de JavaScript</a></li></ul>
+    </div></div>
+  </main>
+
+  <!-- JS de Bootstrap (navbar que se pliega, modales, dropdowns...). Al final del body -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
