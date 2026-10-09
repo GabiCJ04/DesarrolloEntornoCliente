@@ -15,3 +15,7 @@ function mostrarNavegador() {
   console.warn("El userAgent contiene identificadores de compatibilidad; no identifica el motor de forma fiable.");
   alert(navigator.userAgent);
 }
+
+function Despedida() {
+  console.warn("Adios");
+}
