@@ -6,27 +6,37 @@ En esta carpeta está la tarea de operadores y bucles. Abro `index.html` con Liv
 
 ## Capturas
 
-Las cinco imágenes de la plantilla eran ejemplos y se han retirado. Añadir aquí capturas propias tomadas en el equipo antes de entregar:
+Las capturas se tomaron en el navegador del equipo con la página abierta en localhost. En la vista móvil se usó el modo dispositivo de las herramientas de desarrollo.
 
 ### a) Página completa
 
-`capturas/a-pagina.png` — Página completa, con el nombre visible.
+![Página completa con el nombre visible](capturas/a-pagina.png)
+
+Se ven el nombre, las tarjetas de los ejercicios y el pie de página.
 
 ### b) Vista móvil
 
-`capturas/b-movil.png` — Página en el modo dispositivo de las herramientas de desarrollo.
+![Página en modo dispositivo móvil](capturas/b-movil.png)
+
+La rejilla se adapta a un ancho de 400 píxeles y las tarjetas quedan apiladas.
 
 ### c) División entre cero
 
-`capturas/c-dividir-cero.png` — Mensaje de error y consola después de dividir entre cero.
+![Error al dividir entre cero y mensaje de la consola](capturas/c-dividir-cero.png)
+
+Al dividir 5 entre 0 aparece el aviso rojo y la consola registra la operación no permitida.
 
 ### d) Bucles con cero
 
-`capturas/d-bucles-cero.png` — Los tres bucles de texto con el número 0 y la consola visible.
+![Bucles de texto con el número 0](capturas/d-bucles-cero.png)
+
+`for` y `while` hacen cero vueltas; `do…while` se ejecuta una vez porque comprueba la condición al final.
 
 ### e) Badges
 
-`capturas/e-badges.png` — Un bucle con badges pares e impares de distinto color.
+![Seis badges con colores alternos](capturas/e-badges.png)
+
+El bucle `while` añade seis badges: los impares son azules y los pares verdes; también muestra el total.
 
 ## Reflexión
 
