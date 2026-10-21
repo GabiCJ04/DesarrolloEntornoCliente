@@ -3,25 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Cambia Gabriel Cruz Jiménez por tu nombre -->
   <title>Calculadora y bucles · Gabriel Cruz Jiménez</title>
-
-  <!-- CSS de Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Iconos de Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
-<body>
-
-  <!--
-    PLANTILLA DE LA TAREA 4
-    · Solo trae lo imprescindible para empezar. La maquetación con Bootstrap es cosa tuya y cuenta en la nota:
-      rejilla (row y col-*) que se adapte al móvil, cards, botones con color, grupos de botones, iconos...
-    · Todo lo que va entre [corchetes] es un hueco: sustitúyelo por lo tuyo.
-    · Tu JavaScript va en js/app.js. El archivo js/ayudas.js NO se toca.
-  -->
-
-  <!-- NAVBAR con tu nombre -->
+<body class="bg-body-tertiary">
   <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container">
       <span class="navbar-brand"><i class="bi bi-person-circle"></i> Gabriel Cruz Jiménez</span>
@@ -29,68 +15,93 @@
     </div>
   </nav>
 
-  <!-- CABECERA -->
-  <header class="bg-body-tertiary border-bottom py-4 mb-4">
+  <header class="bg-white border-bottom py-4 mb-4">
     <div class="container">
       <h1 class="h2 mb-1">Calculadora y bucles</h1>
-      <p class="lead mb-0 text-body-secondary">[Una frase tuya sobre lo que hace la página]</p>
+      <p class="lead mb-0 text-body-secondary">Pruebo operaciones, comparaciones y tres formas de repetir instrucciones en JavaScript.</p>
     </div>
   </header>
 
   <main class="container mb-5">
-
-    <!-- TODO: organiza las cards con la rejilla de Bootstrap: <div class="row"> y dentro <div class="col-12 col-lg-...">.
-               En el móvil, una debajo de otra; en pantalla grande, repartidas en columnas. -->
-
-    <!-- LOS NÚMEROS. No cambies los id: leerNumero("numero1") y leerNumero("numero2") los buscan por su id -->
-    <section class="card mb-4">
-      <div class="card-header">Los números</div>
-      <div class="card-body">
-        <label for="numero1" class="form-label">Número 1</label>
-        <input type="number" id="numero1" class="form-control mb-3">
-        <label for="numero2" class="form-label">Número 2</label>
-        <input type="number" id="numero2" class="form-control">
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-lg-5">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header"><i class="bi bi-input-cursor-text"></i> Los números</div>
+          <div class="card-body">
+            <label for="numero1" class="form-label">Número 1</label>
+            <input type="number" step="any" id="numero1" class="form-control mb-3" placeholder="Escribe un número">
+            <label for="numero2" class="form-label">Número 2</label>
+            <input type="number" step="any" id="numero2" class="form-control" placeholder="Escribe otro número">
+          </div>
+        </section>
       </div>
-    </section>
-
-    <!-- RESULTADO. Aquí escriben mostrar(), anadirLinea() y anadirBadge(). No cambies el id -->
-    <section class="card mb-4">
-      <div class="card-header">Resultado</div>
-      <div class="card-body">
-        <div id="salida"></div>
+      <div class="col-12 col-lg-7">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header"><i class="bi bi-chat-square-text"></i> Resultado</div>
+          <div class="card-body" aria-live="polite">
+            <div id="salida" class="mb-0">Escribe los números y elige un ejercicio.</div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
 
-    <!-- EJERCICIO 1 · Calculadora -->
-    <section class="card mb-4">
-      <div class="card-header">Calculadora</div>
-      <div class="card-body">
-        <!-- Cada botón llama con onclick a su función de js/app.js, como en la tarea 3 -->
-        <button type="button" class="btn btn-primary" onclick="sumar()">Sumar</button>
-        <!-- TODO: los botones Restar, Multiplicar, Dividir, Potencia y Módulo:
-                   restar(), multiplicar(), dividir(), potencia() y modulo() -->
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header"><i class="bi bi-calculator"></i> Ejercicio 1 · Calculadora</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-primary" onclick="sumar()"><i class="bi bi-plus-lg"></i> Sumar</button>
+            <button type="button" class="btn btn-primary" onclick="restar()"><i class="bi bi-dash-lg"></i> Restar</button>
+            <button type="button" class="btn btn-primary" onclick="multiplicar()"><i class="bi bi-x-lg"></i> Multiplicar</button>
+            <button type="button" class="btn btn-primary" onclick="dividir()"><i class="bi bi-slash-lg"></i> Dividir</button>
+            <button type="button" class="btn btn-primary" onclick="potencia()"><i class="bi bi-superscript"></i> Potencia</button>
+            <button type="button" class="btn btn-primary" onclick="modulo()"><i class="bi bi-percent"></i> Módulo</button>
+          </div>
+        </section>
       </div>
-    </section>
-
-    <!-- TODO EJERCICIO 2 · Comparaciones: una card con los botones
-               «¿Cuál es mayor?» → cualEsMayor()     «¿Par o impar?» → parOImpar() -->
-
-    <!-- TODO EJERCICIOS 3 Y 4 · Bucles: una card con dos grupos de botones (btn-group)
-               Con texto:  for → bucleFor()    while → bucleWhile()    do…while → bucleDoWhile()
-               Con badges: for → badgesFor()   while → badgesWhile()   do…while → badgesDoWhile() -->
-
+      <div class="col-12 col-lg-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-header"><i class="bi bi-arrow-left-right"></i> Ejercicio 2 · Comparaciones</div>
+          <div class="card-body d-flex flex-wrap gap-2 align-content-start">
+            <button type="button" class="btn btn-success" onclick="cualEsMayor()"><i class="bi bi-arrows-angle-expand"></i> ¿Cuál es mayor?</button>
+            <button type="button" class="btn btn-success" onclick="parOImpar()"><i class="bi bi-123"></i> ¿Par o impar?</button>
+          </div>
+        </section>
+      </div>
+      <div class="col-12">
+        <section class="card shadow-sm">
+          <div class="card-header"><i class="bi bi-repeat"></i> Ejercicios 3 y 4 · Bucles</div>
+          <div class="card-body">
+            <p class="text-body-secondary">El número 1 indica cuántas veces se repite cada bucle. Elige una opción:</p>
+            <div class="mb-3">
+              <h2 class="h6">Con texto</h2>
+              <div class="btn-group flex-wrap" role="group" aria-label="Bucles con texto">
+                <button type="button" class="btn btn-warning" onclick="bucleFor()">for</button>
+                <button type="button" class="btn btn-warning" onclick="bucleWhile()">while</button>
+                <button type="button" class="btn btn-warning" onclick="bucleDoWhile()">do…while</button>
+              </div>
+            </div>
+            <div>
+              <h2 class="h6">Con badges</h2>
+              <div class="btn-group flex-wrap" role="group" aria-label="Bucles con badges">
+                <button type="button" class="btn btn-info" onclick="badgesFor()">for</button>
+                <button type="button" class="btn btn-info" onclick="badgesWhile()">while</button>
+                <button type="button" class="btn btn-info" onclick="badgesDoWhile()">do…while</button>
+              </div>
+              <p class="form-text mb-0 mt-2">Los números pares y los impares aparecen con colores distintos.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
-  <footer class="bg-body-tertiary border-top py-3">
-    <div class="container small text-body-secondary">
-      Gabriel Cruz Jiménez · DWEC 26/27 · Tarea 4 · Las capturas, la reflexión y las fuentes están en el README.
-    </div>
+  <footer class="bg-white border-top py-3">
+    <div class="container small text-body-secondary">Gabriel Cruz Jiménez · DWEC 26/27 · Tarea 4 · Las capturas, la reflexión y las fuentes están en el README.</div>
   </footer>
 
-  <!-- JS de Bootstrap, las funciones de ayuda y, después, tu JavaScript. Este orden importa -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/ayudas.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
-
