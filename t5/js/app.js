@@ -1,15 +1,8 @@
 /*
   Tarea 5 · DWEC · Gabriel Cruz Jiménez
-  Manipular el DOM.
-
-  Cómo usar esta plantilla:
-  · Desde este tema, el JavaScript escribe en la página: selecciona elementos y cambia su texto, sus clases...
-  · Hay una función por botón. Escribe tu código donde pone TODO y, cuando termines, borra el TODO.
-  · app.js se carga en el <head> con defer: cuando se ejecuta, el HTML ya está leído.
-  · Selecciona con document.querySelector() / querySelectorAll() (o getElementById).
-  · Texto con textContent; aspecto con classList y las clases de Bootstrap (no con style).
-  · Cada función deja también su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
+  Manipular el DOM y consultar los datos del navegador.
+  El script se carga con defer para que el HTML esté disponible.
+  Los cambios visuales usan clases de Bootstrap.
 */
 
 console.log("app.js cargado");
@@ -189,13 +182,28 @@ function borrarCompletadas() {
 // ============================================================
 
 function verDatosVentana() {
-  // El modelo: el tamaño de la ventana
   const ancho = window.innerWidth;
   const alto = window.innerHeight;
   document.querySelector("#datoVentana").textContent = `${ancho} × ${alto} px`;
 
-  // TODO: con if / else if, el punto de corte de Bootstrap según el ancho: xs (< 576), sm (≥ 576), md (≥ 768),
-  //       lg (≥ 992), xl (≥ 1200) y xxl (≥ 1400). Escríbelo en #datoPunto.
-  // TODO: el tamaño de la pantalla (screen.width y screen.height) en #datoPantalla.
-  // TODO: la URL (location.href) en #datoUrl y el idioma del navegador (navigator.language) en #datoIdioma.
+  // Cada límite pertenece al tramo siguiente, como en Bootstrap.
+  let punto;
+  if (ancho < 576) {
+    punto = "xs";
+  } else if (ancho < 768) {
+    punto = "sm";
+  } else if (ancho < 992) {
+    punto = "md";
+  } else if (ancho < 1200) {
+    punto = "lg";
+  } else if (ancho < 1400) {
+    punto = "xl";
+  } else {
+    punto = "xxl";
+  }
+  document.querySelector("#datoPunto").textContent = punto;
+  document.querySelector("#datoPantalla").textContent = `${screen.width} × ${screen.height} px`;
+  document.querySelector("#datoUrl").textContent = location.href;
+  document.querySelector("#datoIdioma").textContent = navigator.language;
+  console.log("Ejercicio 6:", ancho, alto, punto, screen.width, screen.height, location.href, navigator.language);
 }
