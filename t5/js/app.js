@@ -21,13 +21,21 @@ console.log("app.js cargado");
 // ============================================================
 
 function aplicarCambios() {
-  // El modelo: el primer párrafo, por su id
   const primero = document.getElementById("primero");
-  primero.textContent = "Texto modificado por JavaScript";
+  const segundo = document.querySelector(".segundo");
+  const parrafos = document.querySelectorAll("#contenido p");
 
-  // TODO: el segundo párrafo, con querySelector y su clase (.segundo): resáltalo con la clase "bg-warning-subtle".
-  // TODO: el tercero, con querySelectorAll("#contenido p") y su posición en la lista: ponlo en rojo con "text-danger".
-  // TODO: un console.log() que diga que se han aplicado los cambios.
+  // El ejercicio 2 permitirá borrar párrafos: comprobar si siguen existiendo.
+  if (primero !== null) {
+    primero.textContent = "Texto modificado por JavaScript";
+  }
+  if (segundo !== null) {
+    segundo.classList.add("bg-warning-subtle");
+  }
+  if (parrafos.length >= 3) {
+    parrafos[2].classList.add("text-danger");
+  }
+  console.log("Ejercicio 1: cambios aplicados a los párrafos disponibles");
 }
 
 
