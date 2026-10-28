@@ -74,17 +74,18 @@ function eliminarUltimo() {
 function activarResaltado() {
   const parrafos = document.querySelectorAll("#contenido p");
 
+  // Solo se asignan eventos a los párrafos existentes al pulsar el botón.
   for (const parrafo of parrafos) {
-    // addEventListener("mouseenter", ...) ejecuta la función cuando el ratón entra en el párrafo.
-    // Los eventos los veremos a fondo en el tema 9: de momento, copia este modelo.
     parrafo.addEventListener("mouseenter", function () {
       parrafo.classList.add("bg-body-secondary");
+      console.log("Ejercicio 3: el ratón entra en el párrafo");
     });
-
-    // TODO: lo mismo con "mouseleave" (cuando el ratón sale) para quitar la clase.
+    parrafo.addEventListener("mouseleave", function () {
+      parrafo.classList.remove("bg-body-secondary");
+      console.log("Ejercicio 3: el ratón sale del párrafo");
+    });
   }
-
-  // TODO: un console.log() que diga en cuántos párrafos se ha activado (parrafos.length).
+  console.log("Ejercicio 3: resaltado activado en", parrafos.length, "párrafos");
 }
 
 
