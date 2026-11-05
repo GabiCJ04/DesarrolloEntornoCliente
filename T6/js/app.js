@@ -250,28 +250,81 @@ mostrarProductos();   // la tabla completa nada más cargar
 
 const alumno = {
   nombre: "Gabriel",
-  notas: []
-  // TODO: método anadirNota(nota): si la nota no es un número (Number.isNaN) o no está entre 0 y 10, devuelve false;
-  //       si es válida, la añade a this.notas con push y devuelve true.
-  // TODO: método media(): si no hay notas devuelve 0; si hay, la suma (con reduce) dividida entre el número de notas.
-  //       Recuerda la coma entre una propiedad y la siguiente.
+  notas: [],
+  anadirNota: function (nota) {
+    console.log("Validar nota:", nota);
+    if (typeof nota === "number" && !Number.isNaN(nota) && nota >= 0 && nota <= 10) {
+      this.notas.push(nota);
+      return true;
+    }
+    return false;
+  },
+  media: function () {
+    console.log("Calcular media de:", this.notas);
+    if (this.notas.length === 0) {
+      return 0;
+    }
+    const total = this.notas.reduce(function (suma, nota) {
+      return suma + nota;
+    }, 0);
+    return total / this.notas.length;
+  }
 };
 
 function mostrarNotas() {
-  // TODO: vacía #notas y pon un badge (<span class="badge">) por nota: verde (text-bg-success) si es de 5 o más,
-  //       rojo (text-bg-danger) si no.
-  // TODO: en #media, «Media de N notas: X» con dos decimales (toFixed(2)), o «Todavía no hay notas.».
+  const salida = document.querySelector("#notas");
+  salida.textContent = "";
+  alumno.notas.forEach(function (nota) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "me-1", "mb-1");
+    if (nota >= 5) {
+      badge.classList.add("text-bg-success");
+    } else {
+      badge.classList.add("text-bg-danger");
+    }
+    badge.textContent = nota;
+    salida.append(badge);
+  });
+
+  const media = document.querySelector("#media");
+  if (alumno.notas.length === 0) {
+    media.textContent = "Todavía no hay notas.";
+  } else {
+    media.textContent = "Media de " + alumno.notas.length + " notas: " + alumno.media().toFixed(2);
+  }
+  console.log("Mostrar notas:", alumno.notas);
 }
 
 function anadirNota() {
-  // TODO: si #nota está vacía, muestra un error en #error4 (quítale "d-none").
-  //       Ojo: Number("") vale 0, así que esta comprobación va antes de convertir.
-  // TODO: convierte el valor con Number() y llama a alumno.anadirNota(). Si devuelve false, muestra el error.
-  // TODO: si ha ido bien, oculta el error, vacía la casilla y llama a mostrarNotas().
+  const casilla = document.querySelector("#nota");
+  const valor = casilla.value.trim();
+  const error = document.querySelector("#error4");
+  console.log("Añadir nota escrita:", valor);
+
+  // Se comprueba primero porque Number("") devuelve 0.
+  if (valor === "") {
+    error.textContent = "Escribe una nota antes de añadirla.";
+    error.classList.remove("d-none");
+    return;
+  }
+
+  const nota = Number(valor);
+  if (alumno.anadirNota(nota) === false) {
+    error.textContent = "La nota debe ser un número entre 0 y 10.";
+    error.classList.remove("d-none");
+    return;
+  }
+
+  error.classList.add("d-none");
+  casilla.value = "";
+  mostrarNotas();
 }
 
 function borrarNotas() {
-  // TODO: deja alumno.notas vacío y vuelve a pintar.
+  alumno.notas = [];
+  document.querySelector("#error4").classList.add("d-none");
+  console.log("Borrar todas las notas");
+  mostrarNotas();
 }
 
 mostrarNotas();
