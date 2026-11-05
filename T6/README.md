@@ -60,4 +60,4 @@ En cambio, `splice(2, 2)` elimina dos y desplaza las posiciones siguientes; Rest
 
 ## Uso de IA
 
-ChatGPT se ha utilizado para crear y revisar el código, automatizar las comprobaciones y capturas, y redactar este README. Las comprobaciones se han realizado contrastando el resultado con el enunciado y los temas.
+ChatGPT se ha utilizado para crear README
