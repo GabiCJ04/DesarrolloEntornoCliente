@@ -170,6 +170,7 @@ const productos = [
 
 // Ya está hecha: pinta en la tabla la lista de productos que le pases
 function pintarProductos(lista) {
+  console.log("Pintar productos:", lista);
   const cuerpo = document.querySelector("#tablaProductos");
   cuerpo.textContent = "";
 
@@ -192,25 +193,52 @@ function pintarProductos(lista) {
 }
 
 function mostrarProductos() {
-  // TODO: pinta todos los productos con pintarProductos() y escribe en #mensaje3 cuántos hay.
+  pintarProductos(productos);
+  document.querySelector("#mensaje3").textContent = "Hay " + productos.length + " productos.";
+  console.log("Catálogo completo:", productos);
 }
 
 function ordenarPorPrecio() {
-  // TODO: haz una copia del array con [...productos] y ordénala con sort() de más barato a más caro.
-  //       sort necesita una función de comparación: function (a, b) { return ... }.
-  //       ¿Por qué una copia? Explícalo en el README.
-  // TODO: pinta la copia y escribe en #mensaje3 cómo están ordenados.
+  // sort modifica el array: se ordena una copia para conservar productos.
+  const copia = [...productos];
+  copia.sort(function (a, b) {
+    return a.precio - b.precio;
+  });
+  pintarProductos(copia);
+  document.querySelector("#mensaje3").textContent = "Ordenados de más barato a más caro: " + copia.length + " productos.";
+  console.log("Productos ordenados:", copia);
 }
 
 function filtrarCaros() {
-  // TODO: con filter(), los productos de más de 50 €. Píntalos y escribe en #mensaje3 cuántos son.
+  const caros = productos.filter(function (producto) {
+    return producto.precio > 50;
+  });
+  pintarProductos(caros);
+  document.querySelector("#mensaje3").textContent = "Hay " + caros.length + " productos de más de 50 €.";
+  console.log("Productos de más de 50 €:", caros);
 }
 
 function buscarProducto() {
-  // TODO: lee #buscarProducto (value, trim y toLowerCase). Si está vacío, avisa en #mensaje3.
-  // TODO: con find(), el primer producto cuyo nombre en minúsculas contenga ese texto (includes).
-  // TODO: find devuelve undefined si no encuentra nada: en ese caso, dilo en #mensaje3 y vacía la tabla.
-  //       Si lo encuentra, píntalo solo a él: pintarProductos([encontrado]).
+  const texto = document.querySelector("#buscarProducto").value.trim().toLowerCase();
+  const mensaje = document.querySelector("#mensaje3");
+  console.log("Buscar producto:", texto);
+  if (texto === "") {
+    mensaje.textContent = "Escribe un nombre para buscar.";
+    pintarProductos([]);
+    return;
+  }
+
+  const encontrado = productos.find(function (producto) {
+    return producto.nombre.toLowerCase().includes(texto);
+  });
+  console.log("Resultado de find:", encontrado);
+  if (encontrado === undefined) {
+    mensaje.textContent = "find devuelve undefined: no se ha encontrado ningún producto.";
+    pintarProductos([]);
+  } else {
+    mensaje.textContent = "Primer producto encontrado: " + encontrado.nombre + ".";
+    pintarProductos([encontrado]);
+  }
 }
 
 mostrarProductos();   // la tabla completa nada más cargar
