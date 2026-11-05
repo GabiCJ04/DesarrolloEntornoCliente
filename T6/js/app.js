@@ -337,21 +337,79 @@ mostrarNotas();
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function verDobles() {
-  // TODO: con map(), un array nuevo con el doble de cada número.
-  // TODO: escribe en #salida5 el resultado y, debajo, numeros (para que se vea que no ha cambiado).
+  const dobles = numeros.map(function (numero) {
+    return numero * 2;
+  });
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  const resultado = document.createElement("p");
+  resultado.classList.add("mb-1");
+  resultado.textContent = "Dobles: " + comoTexto(dobles);
+  const original = document.createElement("p");
+  original.classList.add("mb-0");
+  original.textContent = "Original: " + comoTexto(numeros);
+  salida.append(resultado, original);
+  console.log("Dobles con map:", dobles);
 }
 
 function verPares() {
-  // TODO: con filter(), los números pares (n % 2 === 0). Escríbelos en #salida5 como en verDobles().
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  const resultado = document.createElement("p");
+  resultado.classList.add("mb-1");
+  resultado.textContent = "Pares: " + comoTexto(pares);
+  const original = document.createElement("p");
+  original.classList.add("mb-0");
+  original.textContent = "Original: " + comoTexto(numeros);
+  salida.append(resultado, original);
+  console.log("Pares con filter:", pares);
 }
 
 function verSuma() {
-  // TODO: con reduce(), la suma de todos los números (empieza en 0). Escríbela en #salida5.
+  const suma = numeros.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  const resultado = document.createElement("p");
+  resultado.classList.add("mb-1");
+  resultado.textContent = "Suma: " + suma;
+  const original = document.createElement("p");
+  original.classList.add("mb-0");
+  original.textContent = "Original: " + comoTexto(numeros);
+  salida.append(resultado, original);
+  console.log("Suma con reduce:", suma);
 }
 
 function verCadena() {
-  // TODO: los tres seguidos: los pares, después sus dobles y al final la suma de esos dobles.
-  //       Escribe en #salida5 una línea por paso.
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  const dobles = pares.map(function (numero) {
+    return numero * 2;
+  });
+  const suma = dobles.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  const lineas = [
+    "1. filter: " + comoTexto(pares),
+    "2. map: " + comoTexto(dobles),
+    "3. reduce: " + suma,
+    "Original: " + comoTexto(numeros)
+  ];
+  lineas.forEach(function (texto) {
+    const parrafo = document.createElement("p");
+    parrafo.classList.add("mb-1");
+    parrafo.textContent = texto;
+    salida.append(parrafo);
+  });
+  console.log("Filter, map y reduce:", pares, dobles, suma);
 }
 
 
