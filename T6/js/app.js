@@ -97,12 +97,14 @@ function mostrarColores() {
   });
 
   document.querySelector("#totalColores").textContent = colores.length;
+  console.log("Colores y total:", colores, colores.length);
 }
 
 function avisar2(mensaje) {
   const aviso = document.querySelector("#aviso2");
   aviso.textContent = mensaje;
   aviso.classList.remove("d-none");
+  console.log("Aviso de colores:", mensaje);
 }
 
 function anadirColor() {
@@ -122,12 +124,31 @@ function anadirColor() {
 }
 
 function quitarUltimo() {
-  // TODO: si la lista está vacía, avisa con avisar2() y no hagas nada más.
-  // TODO: si no, saca el último con pop(), vuelve a pintar la lista y di en la consola qué color ha salido.
+  console.log("Quitar el último color");
+  if (colores.length === 0) {
+    mostrarColores();
+    avisar2("La lista está vacía. Añade un color primero.");
+    return;
+  }
+
+  const color = colores.pop();
+  console.log("Color que ha salido con pop:", color);
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
 }
 
 function quitarPrimero() {
-  // TODO: lo mismo que quitarUltimo(), pero sacando el primero con shift().
+  console.log("Quitar el primer color");
+  if (colores.length === 0) {
+    mostrarColores();
+    avisar2("La lista está vacía. Añade un color primero.");
+    return;
+  }
+
+  const color = colores.shift();
+  console.log("Color que ha salido con shift:", color);
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
 }
 
 mostrarColores();   // pinta los tres colores de partida nada más cargar
