@@ -421,26 +421,94 @@ const ciudadesOriginal = ["Granada", "Sevilla", "Málaga", "Córdoba", "Jaén", 
 let ciudades = [...ciudadesOriginal];   // una copia: splice cambia ciudades y así podemos restaurarla
 
 function mostrarCiudades() {
-  // TODO: vacía #ciudades y pon un badge por ciudad con su posición: «0 · Granada», «1 · Sevilla»...
-  //       Pista: forEach le pasa a tu función dos datos: function (ciudad, posicion) { ... }.
+  const salida = document.querySelector("#ciudades");
+  salida.textContent = "";
+  ciudades.forEach(function (ciudad, posicion) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "text-bg-light", "border", "me-1", "mb-1");
+    badge.textContent = posicion + " · " + ciudad;
+    salida.append(badge);
+  });
+  console.log("Ciudades con sus posiciones:", ciudades);
 }
 
 function verSlice() {
-  // TODO: guarda ciudades.slice(2, 5) y escribe en #salida6 qué devuelve y cuántas ciudades siguen en el array.
+  const seleccion = ciudades.slice(2, 5);
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  const resultado = document.createElement("p");
+  resultado.classList.add("mb-1");
+  resultado.textContent = "slice(2, 5) devuelve " + comoTexto(seleccion);
+  const cantidad = document.createElement("p");
+  cantidad.classList.add("mb-0");
+  cantidad.textContent = "Siguen " + ciudades.length + " ciudades: el array no ha cambiado.";
+  salida.append(resultado, cantidad);
+  console.log("Slice:", seleccion, "Ciudades:", ciudades);
 }
 
 function hacerSplice() {
-  // TODO: si quedan menos de 3 ciudades, avisa en #salida6 de que hay que restaurar y no hagas nada más.
-  // TODO: si no, ciudades.splice(2, 2): escribe en #salida6 qué devuelve y cuántas quedan, y vuelve a pintar.
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  console.log("Hacer splice en:", ciudades);
+  if (ciudades.length < 3) {
+    const aviso = document.createElement("p");
+    aviso.classList.add("mb-0");
+    aviso.textContent = "Quedan menos de tres ciudades. Pulsa Restaurar para continuar.";
+    salida.append(aviso);
+    return;
+  }
+
+  const eliminadas = ciudades.splice(2, 2);
+  const resultado = document.createElement("p");
+  resultado.classList.add("mb-1");
+  resultado.textContent = "splice(2, 2) devuelve " + comoTexto(eliminadas);
+  const cantidad = document.createElement("p");
+  cantidad.classList.add("mb-0");
+  cantidad.textContent = "Quedan " + ciudades.length + " ciudades: el array sí ha cambiado.";
+  salida.append(resultado, cantidad);
+  mostrarCiudades();
+  console.log("Ciudades eliminadas:", eliminadas);
 }
 
 function restaurarCiudades() {
-  // TODO: vuelve a copiar ciudadesOriginal en ciudades y pinta.
+  ciudades = [...ciudadesOriginal];
+  mostrarCiudades();
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  const mensaje = document.createElement("p");
+  mensaje.classList.add("mb-0");
+  mensaje.textContent = "Restauradas las " + ciudades.length + " ciudades originales.";
+  salida.append(mensaje);
+  console.log("Ciudades restauradas:", ciudades);
 }
 
 function buscarCiudad() {
-  // TODO: lee #buscarCiudad (value y trim). Si está vacío, avisa.
-  // TODO: escribe en #salida6 lo que dan includes() e indexOf() con ese nombre. Si no está, indexOf da -1.
+  const nombre = document.querySelector("#buscarCiudad").value.trim();
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  console.log("Buscar ciudad:", nombre);
+  if (nombre === "") {
+    const aviso = document.createElement("p");
+    aviso.classList.add("mb-0");
+    aviso.textContent = "Escribe el nombre exacto de una ciudad.";
+    salida.append(aviso);
+    return;
+  }
+
+  const incluida = ciudades.includes(nombre);
+  const posicion = ciudades.indexOf(nombre);
+  const lineas = [
+    "Ciudad: " + nombre,
+    "includes(): " + incluida,
+    "indexOf(): " + posicion
+  ];
+  lineas.forEach(function (texto) {
+    const parrafo = document.createElement("p");
+    parrafo.classList.add("mb-1");
+    parrafo.textContent = texto;
+    salida.append(parrafo);
+  });
+  console.log("Resultado de la búsqueda:", incluida, posicion);
 }
 
 mostrarCiudades();
