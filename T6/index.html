@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Cambia Gabriel Cruz Jiménez por tu nombre -->
   <title>Objetos y arrays · Gabriel Cruz Jiménez</title>
 
   <!-- CSS de Bootstrap -->
@@ -15,15 +14,7 @@
 </head>
 <body>
 
-  <!--
-    PLANTILLA DE LA TAREA 6
-    · El HTML ya está hecho: seis tarjetas, una por ejercicio. Tu trabajo está en js/app.js.
-    · No cambies los id que usa el JavaScript (#salida1, #listaColores, #tablaProductos, #notas...)
-      ni el onclick de los botones. Si quieres mejorar el aspecto con Bootstrap, adelante, pero manteniéndolos.
-    · Todo lo que va entre [corchetes] es un hueco: sustitúyelo por lo tuyo.
-  -->
-
-  <!-- NAVBAR con tu nombre -->
+  <!-- NAVBAR -->
   <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container">
       <span class="navbar-brand"><i class="bi bi-person-circle"></i> Gabriel Cruz Jiménez</span>
@@ -69,7 +60,7 @@
           </div>
           <div class="card-body">
             <div class="input-group mb-2">
-              <input type="text" id="color" class="form-control" placeholder="Por ejemplo, amarillo">
+              <input type="text" id="color" class="form-control" aria-label="Nuevo color" placeholder="Por ejemplo, amarillo">
               <button type="button" class="btn btn-success" onclick="anadirColor()"><i class="bi bi-plus-lg"></i> Añadir</button>
             </div>
             <div class="d-flex flex-wrap gap-2 mb-2">
@@ -95,7 +86,7 @@
               <button type="button" class="btn btn-warning btn-sm" onclick="filtrarCaros()"><i class="bi bi-funnel"></i> Más de 50 €</button>
             </div>
             <div class="input-group input-group-sm mb-2">
-              <input type="text" id="buscarProducto" class="form-control" placeholder="Busca por nombre, por ejemplo «ratón»">
+              <input type="text" id="buscarProducto" class="form-control" aria-label="Nombre del producto" placeholder="Busca por nombre, por ejemplo «ratón»">
               <button type="button" class="btn btn-outline-primary" onclick="buscarProducto()"><i class="bi bi-search"></i> Buscar</button>
             </div>
             <p id="mensaje3" class="small text-body-secondary mb-2"></p>
@@ -164,7 +155,7 @@
               <button type="button" class="btn btn-outline-secondary btn-sm" onclick="restaurarCiudades()"><i class="bi bi-arrow-counterclockwise"></i> Restaurar</button>
             </div>
             <div class="input-group input-group-sm mb-2">
-              <input type="text" id="buscarCiudad" class="form-control" placeholder="Nombre exacto, por ejemplo «Jaén»">
+              <input type="text" id="buscarCiudad" class="form-control" aria-label="Nombre exacto de la ciudad" placeholder="Nombre exacto, por ejemplo «Jaén»">
               <button type="button" class="btn btn-outline-primary" onclick="buscarCiudad()"><i class="bi bi-search"></i> Buscar</button>
             </div>
             <div id="salida6" class="bg-body-tertiary border rounded p-2 small font-monospace">Pulsa un botón para ver el resultado.</div>

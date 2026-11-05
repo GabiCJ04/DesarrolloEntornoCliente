@@ -1,28 +1,15 @@
-/*
-  Tarea 6 · DWEC · Gabriel Cruz Jiménez
-  Objetos y arrays.
-
-  Cómo usar esta plantilla:
-  · Hay una función por botón. Escribe tu código donde pone TODO y, cuando termines, borra el TODO.
-  · Ya tienes hechas, como modelo, comoTexto(), pintarProductos() y el ejercicio 2 casi entero:
-    léelas antes de empezar, porque el resto se hace igual.
-  · Los resultados se pintan en la página como en el tema 5: createElement, textContent, classList y append.
-    Antes de volver a pintar una lista, vacíala con textContent = "".
-  · Las funciones se escriben con function, también las que pasas a forEach, sort, map, filter o reduce.
-    Las funciones flecha las veremos en el tema 7: en esta tarea, no las uses.
-  · Cada función deja también su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
-*/
+// Tarea 6 · Objetos y arrays · Gabriel Cruz Jiménez
+// Los datos cambian en memoria y los resultados se pintan con el DOM.
 
 console.log("app.js cargado");
 
 
 // ============================================================
 // Ayuda: un array como texto, por ejemplo [1, 2, 3]
-// (ya está hecha: úsala cuando quieras enseñar un array)
 // ============================================================
 
 function comoTexto(lista) {
+  console.log("Array como texto:", lista);
   return "[" + lista.join(", ") + "]";
 }
 
@@ -80,7 +67,7 @@ function quitarCurso() {
 
 // ============================================================
 // Ejercicio 2 · Colores
-// mostrarColores() y anadirColor() ya están hechas: son el modelo
+// Añadir al final y quitar por el principio o por el final.
 // ============================================================
 
 const colores = ["rojo", "verde", "azul"];
@@ -110,6 +97,7 @@ function avisar2(mensaje) {
 function anadirColor() {
   const casilla = document.querySelector("#color");
   const color = casilla.value.trim();
+  console.log("Añadir color:", color);
 
   if (color === "") {
     avisar2("Escribe un color antes de pulsar «Añadir».");
@@ -158,7 +146,7 @@ mostrarColores();   // pinta los tres colores de partida nada más cargar
 // Ejercicio 3 · Catálogo de productos
 // ============================================================
 
-// Puedes cambiar los productos por otros, pero deja al menos seis, con estas tres propiedades
+// El catálogo inicial se conserva al ordenar y al filtrar.
 const productos = [
   { nombre: "Teclado mecánico", precio: 79.9, categoria: "Periféricos" },
   { nombre: "Ratón inalámbrico", precio: 24.5, categoria: "Periféricos" },
@@ -168,7 +156,7 @@ const productos = [
   { nombre: "Auriculares con micro", precio: 59, categoria: "Audio" }
 ];
 
-// Ya está hecha: pinta en la tabla la lista de productos que le pases
+// Pinta únicamente la lista recibida y vacía la tabla anterior.
 function pintarProductos(lista) {
   console.log("Pintar productos:", lista);
   const cuerpo = document.querySelector("#tablaProductos");
