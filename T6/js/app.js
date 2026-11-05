@@ -1,30 +1,25 @@
-/*
-  Tarea 6 · DWEC · Gabriel Cruz Jiménez
-  Objetos y arrays.
-
-  Cómo usar esta plantilla:
-  · Hay una función por botón. Escribe tu código donde pone TODO y, cuando termines, borra el TODO.
-  · Ya tienes hechas, como modelo, comoTexto(), pintarProductos() y el ejercicio 2 casi entero:
-    léelas antes de empezar, porque el resto se hace igual.
-  · Los resultados se pintan en la página como en el tema 5: createElement, textContent, classList y append.
-    Antes de volver a pintar una lista, vacíala con textContent = "".
-  · Las funciones se escriben con function, también las que pasas a forEach, sort, map, filter o reduce.
-    Las funciones flecha las veremos en el tema 7: en esta tarea, no las uses.
-  · Cada función deja también su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
-*/
+// Tarea 6 · DWEC · Gabriel Cruz Jiménez
+// Objetos y arrays. Los resultados se crean con el DOM.
 
 console.log("app.js cargado");
 
 
 // ============================================================
 // Ayuda: un array como texto, por ejemplo [1, 2, 3]
-// (ya está hecha: úsala cuando quieras enseñar un array)
 // ============================================================
 
 function comoTexto(lista) {
   console.log("comoTexto:", lista);
   return "[" + lista.join(", ") + "]";
+}
+
+// Crea una línea de resultado sin interpretar el texto como HTML.
+function escribirLinea(salida, texto) {
+  const linea = document.createElement("p");
+  linea.classList.add("mb-1");
+  linea.textContent = texto;
+  salida.append(linea);
+  console.log("escribirLinea:", texto);
 }
 
 
@@ -79,7 +74,7 @@ function quitarCurso() {
 
 // ============================================================
 // Ejercicio 2 · Colores
-// mostrarColores() y anadirColor() ya están hechas: son el modelo
+// push añade al final, pop quita el último y shift quita el primero.
 // ============================================================
 
 const colores = ["rojo", "verde", "azul"];
@@ -157,7 +152,7 @@ mostrarColores();   // pinta los tres colores de partida nada más cargar
 // Ejercicio 3 · Catálogo de productos
 // ============================================================
 
-// Puedes cambiar los productos por otros, pero deja al menos seis, con estas tres propiedades
+// Cada producto tiene nombre, precio y categoría.
 const productos = [
   { nombre: "Teclado mecánico", precio: 79.9, categoria: "Periféricos" },
   { nombre: "Ratón inalámbrico", precio: 24.5, categoria: "Periféricos" },
@@ -167,7 +162,7 @@ const productos = [
   { nombre: "Auriculares con micro", precio: 59, categoria: "Audio" }
 ];
 
-// Ya está hecha: pinta en la tabla la lista de productos que le pases
+// La misma función pinta el catálogo, una copia ordenada o una selección.
 function pintarProductos(lista) {
   console.log("Ejercicio 3: pintar productos", lista);
   const cuerpo = document.querySelector("#tablaProductos");
@@ -338,21 +333,57 @@ mostrarNotas();
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function verDobles() {
-  // TODO: con map(), un array nuevo con el doble de cada número.
-  // TODO: escribe en #salida5 el resultado y, debajo, numeros (para que se vea que no ha cambiado).
+  const dobles = numeros.map(function (numero) {
+    return numero * 2;
+  });
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  escribirLinea(salida, "Dobles con map: " + comoTexto(dobles));
+  escribirLinea(salida, "Original: " + comoTexto(numeros));
+  console.log("Ejercicio 5: dobles", dobles);
 }
 
 function verPares() {
-  // TODO: con filter(), los números pares (n % 2 === 0). Escríbelos en #salida5 como en verDobles().
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  escribirLinea(salida, "Pares con filter: " + comoTexto(pares));
+  escribirLinea(salida, "Original: " + comoTexto(numeros));
+  console.log("Ejercicio 5: pares", pares);
 }
 
 function verSuma() {
-  // TODO: con reduce(), la suma de todos los números (empieza en 0). Escríbela en #salida5.
+  const suma = numeros.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  escribirLinea(salida, "Suma con reduce: " + suma);
+  escribirLinea(salida, "Original: " + comoTexto(numeros));
+  console.log("Ejercicio 5: suma", suma);
 }
 
 function verCadena() {
-  // TODO: los tres seguidos: los pares, después sus dobles y al final la suma de esos dobles.
-  //       Escribe en #salida5 una línea por paso.
+  // El resultado de cada paso es la entrada del siguiente.
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  const dobles = pares.map(function (numero) {
+    return numero * 2;
+  });
+  const suma = dobles.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+
+  const salida = document.querySelector("#salida5");
+  salida.textContent = "";
+  escribirLinea(salida, "1. filter: " + comoTexto(pares));
+  escribirLinea(salida, "2. map: " + comoTexto(dobles));
+  escribirLinea(salida, "3. reduce: " + suma);
+  escribirLinea(salida, "Original: " + comoTexto(numeros));
+  console.log("Ejercicio 5: tres pasos", pares, dobles, suma);
 }
 
 
@@ -364,26 +395,67 @@ const ciudadesOriginal = ["Granada", "Sevilla", "Málaga", "Córdoba", "Jaén", 
 let ciudades = [...ciudadesOriginal];   // una copia: splice cambia ciudades y así podemos restaurarla
 
 function mostrarCiudades() {
-  // TODO: vacía #ciudades y pon un badge por ciudad con su posición: «0 · Granada», «1 · Sevilla»...
-  //       Pista: forEach le pasa a tu función dos datos: function (ciudad, posicion) { ... }.
+  const salida = document.querySelector("#ciudades");
+  salida.textContent = "";
+  ciudades.forEach(function (ciudad, posicion) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "text-bg-light", "border", "me-1", "mb-1");
+    badge.textContent = posicion + " · " + ciudad;
+    salida.append(badge);
+  });
+  console.log("Ejercicio 6: ciudades", ciudades);
 }
 
 function verSlice() {
-  // TODO: guarda ciudades.slice(2, 5) y escribe en #salida6 qué devuelve y cuántas ciudades siguen en el array.
+  const seleccion = ciudades.slice(2, 5);
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  escribirLinea(salida, "slice(2, 5) devuelve " + comoTexto(seleccion));
+  escribirLinea(salida, "Siguen " + ciudades.length + " ciudades: slice no cambia el array.");
+  console.log("Ejercicio 6: slice", seleccion, "Original:", ciudades);
 }
 
 function hacerSplice() {
-  // TODO: si quedan menos de 3 ciudades, avisa en #salida6 de que hay que restaurar y no hagas nada más.
-  // TODO: si no, ciudades.splice(2, 2): escribe en #salida6 qué devuelve y cuántas quedan, y vuelve a pintar.
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  if (ciudades.length < 3) {
+    escribirLinea(salida, "Quedan menos de tres ciudades. Pulsa Restaurar antes de usar splice.");
+    console.log("Ejercicio 6: no se puede hacer splice", ciudades);
+    return;
+  }
+
+  const eliminadas = ciudades.splice(2, 2);
+  escribirLinea(salida, "splice(2, 2) devuelve " + comoTexto(eliminadas));
+  escribirLinea(salida, "Quedan " + ciudades.length + " ciudades: splice cambia el array.");
+  mostrarCiudades();
+  console.log("Ejercicio 6: splice ha quitado", eliminadas);
 }
 
 function restaurarCiudades() {
-  // TODO: vuelve a copiar ciudadesOriginal en ciudades y pinta.
+  ciudades = [...ciudadesOriginal];
+  mostrarCiudades();
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  escribirLinea(salida, "Restauradas las " + ciudades.length + " ciudades originales.");
+  console.log("Ejercicio 6: ciudades restauradas", ciudades);
 }
 
 function buscarCiudad() {
-  // TODO: lee #buscarCiudad (value y trim). Si está vacío, avisa.
-  // TODO: escribe en #salida6 lo que dan includes() e indexOf() con ese nombre. Si no está, indexOf da -1.
+  const nombre = document.querySelector("#buscarCiudad").value.trim();
+  const salida = document.querySelector("#salida6");
+  salida.textContent = "";
+  console.log("Ejercicio 6: buscar ciudad", nombre);
+  if (nombre === "") {
+    escribirLinea(salida, "Escribe el nombre exacto de una ciudad para buscar.");
+    return;
+  }
+
+  const incluida = ciudades.includes(nombre);
+  const posicion = ciudades.indexOf(nombre);
+  escribirLinea(salida, "Ciudad: " + nombre);
+  escribirLinea(salida, "includes(): " + incluida);
+  escribirLinea(salida, "indexOf(): " + posicion);
+  console.log("Ejercicio 6: búsqueda", nombre, incluida, posicion);
 }
 
 mostrarCiudades();
