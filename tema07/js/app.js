@@ -102,3 +102,15 @@ function buscarAntigua() {
   }
   pintarPeliculas("Primera anterior a 1990", [pelicula.titulo + " · " + pelicula.anio]);
 }
+
+//3
+const numeros = [-3, -1, 0, 2, 4];
+
+function transformar(lista, operacion) {
+  console.log("Transformar", lista);
+  const resultado = [];
+  for (const numero of lista) {
+    resultado.push(operacion(numero));
+  }
+  return resultado;
+}
