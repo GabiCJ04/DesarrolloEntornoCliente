@@ -78,3 +78,9 @@ function verLargas() {
   pintarPeliculas("Más de dos horas", largas.map(p => p.titulo + " · " + p.minutos + " min"));
 }
 
+function ordenarPorAnio() {
+  console.log("Ordenar por año");
+  const ordenadas = peliculas.slice().sort((a, b) => a.anio - b.anio);
+  pintarPeliculas("De más antigua a más reciente", ordenadas.map(p => p.anio + " · " + p.titulo));
+}
+
