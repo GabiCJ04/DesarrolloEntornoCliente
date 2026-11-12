@@ -187,3 +187,52 @@ class Alumno {
     return this.nombre + ", de " + this.curso;
   }
 }
+
+class AlumnoFCT extends Alumno {
+  constructor(nombre, curso, empresa) {
+    super(nombre, curso);
+    console.log("Empresa", empresa);
+    this.empresa = empresa;
+  }
+
+  presentarse() {
+    console.log("Presentación en prácticas", this.nombre);
+    return super.presentarse() + ", en prácticas en " + this.empresa;
+  }
+}
+
+const lucia = new Alumno("Lucía Martín", "2.º DAW");
+lucia.anadirNota(7);
+lucia.anadirNota(9);
+const gabriel = new AlumnoFCT("Gabriel Cruz Jiménez", "2.º DAW", "Anaisoft");
+gabriel.anadirNota(8);
+gabriel.anadirNota(9);
+const alumnos = [lucia, gabriel];
+
+function pintarAlumnos() {
+  console.log("Pintar alumnos", alumnos.length);
+  pintarLista("salida5", alumnos.map(a => a.presentarse() + " · Notas: " +
+    (a.notas.join(", ") || "sin notas") + " · Media: " + a.media().toFixed(2)));
+}
+
+function crearAlumno() {
+  console.log("Leer alumno");
+  const nombre = document.querySelector("#nombre").value.trim();
+  const curso = document.querySelector("#curso").value.trim() || "2.º DAW";
+  const empresa = document.querySelector("#empresa").value.trim();
+  const texto = document.querySelector("#notas").value.trim();
+  const partes = texto === "" ? [] : texto.split(",");
+  const notas = partes.map(parte => Number(parte.trim()));
+  if (nombre === "" || partes.some(p => p.trim() === "") ||
+      notas.some(n => !Number.isFinite(n) || n < 0 || n > 10)) {
+    mostrarError("error5", "Escribe un nombre y revisa las notas. Usa valores de 0 a 10 separados por comas.");
+    return;
+  }
+  mostrarError("error5", "");
+  const alumno = empresa === "" ? new Alumno(nombre, curso) : new AlumnoFCT(nombre, curso, empresa);
+  notas.forEach(nota => alumno.anadirNota(nota));
+  alumnos.push(alumno);
+  pintarAlumnos();
+}
+
+pintarAlumnos();
