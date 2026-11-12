@@ -60,3 +60,10 @@ const peliculas = [
   { titulo: "Coco", anio: 2017, minutos: 105 },
   { titulo: "Alien", anio: 1979, minutos: 117 }
 ];
+
+function pintarPeliculas(mensaje, lineas) {
+  console.log("Películas", mensaje);
+  document.querySelector("#mensaje2").textContent = mensaje;
+  pintarLista("salida2", lineas);
+}
+
