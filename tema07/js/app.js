@@ -136,4 +136,27 @@ function verAbsoluto() {
   comparar(Math.abs);
 }
 
+//4
+function crearContador(paso = 1) {
+  console.log("Crear contador", paso);
+  let cuenta = 0;
+  return function () {
+    cuenta += paso;
+    console.log("Cuenta", cuenta);
+    return cuenta;
+  };
+}
+
+const contadorUno = crearContador();
+const contadorCinco = crearContador(5);
+
+function sumarUno() {
+  console.log("Sumar uno");
+  document.querySelector("#cuenta1").textContent = contadorUno();
+}
+
+function sumarCinco() {
+  console.log("Sumar cinco");
+  document.querySelector("#cuenta5").textContent = contadorCinco();
+}
 
