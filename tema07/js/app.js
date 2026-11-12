@@ -25,6 +25,7 @@ function mostrarError(id, mensaje) {
     error.classList.toggle("d-none", mensaje === "");
 }
 
+//1
 function calcularPrecio(base, iva = 21, descuento = 0) {
   console.log("Calcular precio", base, iva, descuento);
   const subtotal = base - base * descuento / 100;
@@ -54,6 +55,8 @@ function mostrarPrecio() {
     "IVA (" + iva + " %): " + formatearEuros((base - rebaja) * iva / 100), "Total: " + formatearEuros(total)]);
 }
 
+
+//2 
 const peliculas = [
   { titulo: "Origen", anio: 2010, minutos: 148 },
   { titulo: "Regreso al futuro", anio: 1985, minutos: 116 },
@@ -84,3 +87,18 @@ function ordenarPorAnio() {
   pintarPeliculas("De más antigua a más reciente", ordenadas.map(p => p.anio + " · " + p.titulo));
 }
 
+function verDuracion() {
+  console.log("Duración total");
+  const minutos = peliculas.reduce((suma, p) => suma + p.minutos, 0);
+  pintarPeliculas("Duración total", [minutos + " minutos"]);
+}
+
+function buscarAntigua() {
+  console.log("Primera película anterior a 1990");
+  const pelicula = peliculas.find(p => p.anio < 1990);
+  if (pelicula === undefined) {
+    pintarPeliculas("No hay películas anteriores a 1990.", []);
+    return;
+  }
+  pintarPeliculas("Primera anterior a 1990", [pelicula.titulo + " · " + pelicula.anio]);
+}
