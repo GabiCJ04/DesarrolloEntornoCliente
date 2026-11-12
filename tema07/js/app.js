@@ -30,4 +30,26 @@ function calcularPrecio(base, iva = 21, descuento = 0) {
   const subtotal = base - base * descuento / 100;
   return subtotal + subtotal * iva / 100;
 }
- 
+
+function mostrarPrecio() {
+  console.log("Mostrar precio");
+  const campoBase = document.querySelector("#base");
+  const campoDescuento = document.querySelector("#descuento");
+  const base = Number(campoBase.value);
+  const iva = Number(document.querySelector("#iva").value);
+  const descuento = Number(campoDescuento.value);
+  document.querySelector("#salida1").textContent = "";
+  if (campoBase.value === "" || !campoBase.validity.valid) {
+    mostrarError("error1", "Introduce una base de cero euros o más.");
+    return;
+  }
+  if (!campoDescuento.validity.valid) {
+    mostrarError("error1", "El descuento debe estar entre 0 y 100.");
+    return;
+  }
+  mostrarError("error1", "");
+  const total = campoDescuento.value === "" ? calcularPrecio(base, iva) : calcularPrecio(base, iva, descuento);
+  const rebaja = base * descuento / 100;
+  pintarLista("salida1", ["Base: " + formatearEuros(base), "Descuento: " + formatearEuros(rebaja),
+    "IVA (" + iva + " %): " + formatearEuros((base - rebaja) * iva / 100), "Total: " + formatearEuros(total)]);
+}
