@@ -160,3 +160,30 @@ function sumarCinco() {
   document.querySelector("#cuenta5").textContent = contadorCinco();
 }
 
+//5
+class Alumno {
+  constructor(nombre, curso) {
+    console.log("Crear alumno", nombre, curso);
+    this.nombre = nombre;
+    this.curso = curso;
+    this.notas = [];
+  }
+
+  anadirNota(nota) {
+    console.log("Añadir nota", nota);
+    if (!Number.isFinite(nota) || nota < 0 || nota > 10) return false;
+    this.notas.push(nota);
+    return true;
+  }
+
+  media() {
+    console.log("Media", this.nombre);
+    if (this.notas.length === 0) return 0;
+    return this.notas.reduce((suma, nota) => suma + nota, 0) / this.notas.length;
+  }
+
+  presentarse() {
+    console.log("Presentación", this.nombre);
+    return this.nombre + ", de " + this.curso;
+  }
+}
