@@ -17,3 +17,10 @@ function formatearEuros(valor){
     console.log("Formatear euros", valor);
     return valor.toFixed(2).replace(".", ",") + "€";
 }
+
+function mostrarError(id, mensaje) {
+    console.log("Validación", id, mensaje);
+    const error = document.getElementById(id);
+    error.textContent = mensaje;
+    error.classList.toggle("d-none", mensaje === "");
+}
