@@ -24,3 +24,10 @@ function mostrarError(id, mensaje) {
     error.textContent = mensaje;
     error.classList.toggle("d-none", mensaje === "");
 }
+
+function calcularPrecio(base, iva = 21, descuento = 0) {
+  console.log("Calcular precio", base, iva, descuento);
+  const subtotal = base - base * descuento / 100;
+  return subtotal + subtotal * iva / 100;
+}
+ 
