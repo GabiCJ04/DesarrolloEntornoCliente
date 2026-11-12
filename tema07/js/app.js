@@ -67,3 +67,9 @@ function pintarPeliculas(mensaje, lineas) {
   pintarLista("salida2", lineas);
 }
 
+function verTitulos() {
+  console.log("Títulos");
+  pintarPeliculas("Títulos del catálogo", peliculas.map(p => p.titulo));
+}
+
+
