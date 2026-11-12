@@ -72,4 +72,9 @@ function verTitulos() {
   pintarPeliculas("Títulos del catálogo", peliculas.map(p => p.titulo));
 }
 
+function verLargas() {
+  console.log("Más de dos horas");
+  const largas = peliculas.filter(p => p.minutos > 120);
+  pintarPeliculas("Más de dos horas", largas.map(p => p.titulo + " · " + p.minutos + " min"));
+}
 
