@@ -53,3 +53,10 @@ function mostrarPrecio() {
   pintarLista("salida1", ["Base: " + formatearEuros(base), "Descuento: " + formatearEuros(rebaja),
     "IVA (" + iva + " %): " + formatearEuros((base - rebaja) * iva / 100), "Total: " + formatearEuros(total)]);
 }
+
+const peliculas = [
+  { titulo: "Origen", anio: 2010, minutos: 148 },
+  { titulo: "Regreso al futuro", anio: 1985, minutos: 116 },
+  { titulo: "Coco", anio: 2017, minutos: 105 },
+  { titulo: "Alien", anio: 1979, minutos: 117 }
+];
