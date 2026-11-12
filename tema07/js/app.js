@@ -236,3 +236,54 @@ function crearAlumno() {
 }
 
 pintarAlumnos();
+
+//6
+function diasHasta(fecha) {
+  console.log("Días hasta", fecha);
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  return Math.round((fecha - hoy) / (24 * 60 * 60 * 1000));
+}
+
+function mostrarFecha() {
+  console.log("Mostrar fecha");
+  const valor = document.querySelector("#fecha").value;
+  const salida = document.querySelector("#salida6a");
+  if (valor === "") {
+    salida.textContent = "Elige una fecha.";
+    return;
+  }
+  const partes = valor.split("-").map(n => Number(n));
+  const fecha = new Date(0);
+  fecha.setFullYear(partes[0], partes[1] - 1, partes[2]);
+  fecha.setHours(0, 0, 0, 0);
+  const dias = diasHasta(fecha);
+  const texto = fecha.toLocaleDateString("es-ES", {
+    weekday: "long", year: "numeric", month: "long", day: "numeric"
+  });
+  if (dias === 0) salida.textContent = "Es hoy: " + texto + ".";
+  else if (dias > 0) salida.textContent = (dias === 1 ? "Falta 1 día" : "Faltan " + dias + " días") + ": será " + texto + ".";
+  else salida.textContent = "Fue hace " + (dias === -1 ? "1 día" : Math.abs(dias) + " días") + ": " + texto + ".";
+}
+
+function iniciales(nombreCompleto) {
+  console.log("Iniciales", nombreCompleto);
+  return nombreCompleto.trim().split(" ").filter(p => p.length > 0)
+    .map(p => p[0].toUpperCase()).join("");
+}
+
+function crearUsuario(nombreCompleto) {
+  console.log("Crear usuario", nombreCompleto);
+  const cifras = String(Math.floor(Math.random() * 1000)).padStart(3, "0");
+  return iniciales(nombreCompleto).toLowerCase() + cifras;
+}
+
+function mostrarUsuario() {
+  console.log("Mostrar usuario");
+  const nombre = document.querySelector("#nombreCompleto").value.trim();
+  if (nombre === "") {
+    document.querySelector("#salida6b").textContent = "Escribe un nombre.";
+    return;
+  }
+  pintarLista("salida6b", ["Iniciales: " + iniciales(nombre), "Usuario: " + crearUsuario(nombre)]);
+}
