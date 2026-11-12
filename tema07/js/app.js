@@ -114,3 +114,26 @@ function transformar(lista, operacion) {
   }
   return resultado;
 }
+
+function comparar(operacion) {
+  console.log("Comparar con map");
+  pintarLista("salida3", ["transformar: " + transformar(numeros, operacion).join(", "),
+    "map: " + numeros.map(n => operacion(n)).join(", "), "Original: " + numeros.join(", ")]);
+}
+
+function verDoble() {
+  console.log("Doble");
+  comparar(n => n * 2);
+}
+
+function verCuadrado() {
+  console.log("Cuadrado");
+  comparar(n => n * n);
+}
+
+function verAbsoluto() {
+  console.log("Valor absoluto");
+  comparar(Math.abs);
+}
+
+
