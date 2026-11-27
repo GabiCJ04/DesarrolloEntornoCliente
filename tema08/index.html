@@ -59,6 +59,20 @@
           </div>
         </div>
       </fieldset>
+      <fieldset class="mb-4">
+        <legend class="fs-5 border-bottom pb-1">Tu inscripción</legend>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="modalidad" class="form-label">Modalidad *</label>
+            <select id="modalidad" name="modalidad" class="form-select" required aria-describedby="errorModalidad">
+              <option value="">Elige una modalidad</option>
+              <option value="presencial">Presencial</option>
+              <option value="online">En línea</option>
+            </select>
+            <div id="errorModalidad" class="invalid-feedback"></div>
+          </div>
+        </div>
+      </fieldset>
     </form>
   </main>
   <footer class="border-top py-3">
