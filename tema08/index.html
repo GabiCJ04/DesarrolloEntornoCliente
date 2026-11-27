@@ -71,6 +71,22 @@
             </select>
             <div id="errorModalidad" class="invalid-feedback"></div>
           </div>
+          <div class="col-md-6 mb-3" role="radiogroup" aria-labelledby="tituloTaller" aria-describedby="errorTaller">
+            <p id="tituloTaller" class="form-label">Taller de la tarde *</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="tallerHtml" name="taller" value="html" required>
+              <label class="form-check-label" for="tallerHtml">HTML accesible</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="tallerCss" name="taller" value="css" required>
+              <label class="form-check-label" for="tallerCss">Diseño con CSS</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="tallerJs" name="taller" value="javascript" required>
+              <label class="form-check-label" for="tallerJs">Eventos con JavaScript</label>
+            </div>
+            <div id="errorTaller" class="invalid-feedback"></div>
+          </div>
         </div>
       </fieldset>
     </form>
