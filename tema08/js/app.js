@@ -13,6 +13,29 @@ comentarios.addEventListener("input", () => {
 });
 
 const formulario = document.getElementById("inscripcion");
+const email = document.getElementById("email");
+const email2 = document.getElementById("email2");
+const errorEmail2 = document.getElementById("errorEmail2");
+
+function mostrarErrorCorreo(mensaje) {
+  email2.setCustomValidity(mensaje);
+  errorEmail2.textContent = mensaje;
+  email2.classList.toggle("is-invalid", mensaje !== "");
+  if (mensaje) {
+    email2.setAttribute("aria-invalid", "true");
+  } else {
+    email2.removeAttribute("aria-invalid");
+  }
+}
+
+function comprobarCorreos() {
+  const distintos = email2.value !== "" && email.value !== email2.value;
+  mostrarErrorCorreo(distintos ? "Los dos correos no coinciden." : "");
+}
+
+email.addEventListener("input", comprobarCorreos);
+email2.addEventListener("input", comprobarCorreos);
+
 const resumen = document.getElementById("resumen");
 const avisoResumen = document.getElementById("avisoResumen");
 
@@ -29,6 +52,7 @@ document.getElementById("verResumen").addEventListener("click", () => {
 });
 
 formulario.addEventListener("reset", () => {
+  mostrarErrorCorreo("");
   resumen.replaceChildren();
   avisoResumen.textContent = "";
   valorNivel.defaultValue = nivel.defaultValue;
