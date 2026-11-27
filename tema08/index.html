@@ -41,6 +41,23 @@
             <div id="errorEmail2" class="invalid-feedback"></div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="telefono" class="form-label">Teléfono (opcional)</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" autocomplete="tel"
+                   pattern="[0-9]{9}" title="Introduce nueve cifras sin espacios."
+                   aria-describedby="errorTelefono">
+            <div id="errorTelefono" class="invalid-feedback"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="nacimiento" class="form-label">Fecha de nacimiento *</label>
+            <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday"
+                   min="1940-01-01" max="2010-12-31" required
+                   title="Elige una fecha entre el 01/01/1940 y el 31/12/2010."
+                   aria-describedby="errorNacimiento">
+            <div id="errorNacimiento" class="invalid-feedback"></div>
+          </div>
+        </div>
       </fieldset>
     </form>
   </main>
