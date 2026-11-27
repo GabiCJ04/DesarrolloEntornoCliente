@@ -11,3 +11,10 @@ const contador = document.getElementById("contador");
 comentarios.addEventListener("input", () => {
   contador.textContent = `${comentarios.value.length} de ${comentarios.maxLength} caracteres`;
 });
+
+const formulario = document.getElementById("inscripcion");
+
+formulario.addEventListener("reset", () => {
+  valorNivel.defaultValue = nivel.defaultValue;
+  contador.textContent = `${comentarios.defaultValue.length} de ${comentarios.maxLength} caracteres`;
+});
