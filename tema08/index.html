@@ -17,104 +17,114 @@
   <main class="container py-4">
     <h1>Jornadas de Desarrollo Web 2026</h1>
     <p>Formulario de inscripción. Los campos con * son obligatorios.</p>
-    <form id="inscripcion" action="recibido.html" method="get">
-      <fieldset class="mb-4">
-        <legend class="fs-5 border-bottom pb-1">Tus datos</legend>
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre y apellidos *</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="name"
-                 required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\- ]+"
-                 title="Entre 3 y 60 caracteres. Usa letras, espacios o guiones."
-                 aria-describedby="errorNombre">
-          <div id="errorNombre" class="invalid-feedback"></div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="email" class="form-label">Correo electrónico *</label>
-            <input type="email" class="form-control" id="email" name="email" autocomplete="email"
-                   required aria-describedby="errorEmail">
-            <div id="errorEmail" class="invalid-feedback"></div>
+    <div class="row g-4">
+      <form class="col-12 col-lg-7" id="inscripcion" action="recibido.html" method="get">
+        <fieldset class="mb-4">
+          <legend class="fs-5 border-bottom pb-1">Tus datos</legend>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre y apellidos *</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="name"
+                   required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\- ]+"
+                   title="Entre 3 y 60 caracteres. Usa letras, espacios o guiones."
+                   aria-describedby="errorNombre">
+            <div id="errorNombre" class="invalid-feedback"></div>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="email2" class="form-label">Repite el correo *</label>
-            <input type="email" class="form-control" id="email2" autocomplete="email"
-                   required aria-describedby="errorEmail2">
-            <div id="errorEmail2" class="invalid-feedback"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="telefono" class="form-label">Teléfono (opcional)</label>
-            <input type="tel" class="form-control" id="telefono" name="telefono" autocomplete="tel"
-                   pattern="[0-9]{9}" title="Introduce nueve cifras sin espacios."
-                   aria-describedby="errorTelefono">
-            <div id="errorTelefono" class="invalid-feedback"></div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="nacimiento" class="form-label">Fecha de nacimiento *</label>
-            <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday"
-                   min="1940-01-01" max="2010-12-31" required
-                   title="Elige una fecha entre el 01/01/1940 y el 31/12/2010."
-                   aria-describedby="errorNacimiento">
-            <div id="errorNacimiento" class="invalid-feedback"></div>
-          </div>
-        </div>
-      </fieldset>
-      <fieldset class="mb-4">
-        <legend class="fs-5 border-bottom pb-1">Tu inscripción</legend>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="modalidad" class="form-label">Modalidad *</label>
-            <select id="modalidad" name="modalidad" class="form-select" required aria-describedby="errorModalidad">
-              <option value="">Elige una modalidad</option>
-              <option value="presencial">Presencial</option>
-              <option value="online">En línea</option>
-            </select>
-            <div id="errorModalidad" class="invalid-feedback"></div>
-          </div>
-          <div class="col-md-6 mb-3" role="radiogroup" aria-labelledby="tituloTaller" aria-describedby="errorTaller">
-            <p id="tituloTaller" class="form-label">Taller de la tarde *</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="tallerHtml" name="taller" value="html" required>
-              <label class="form-check-label" for="tallerHtml">HTML accesible</label>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Correo electrónico *</label>
+              <input type="email" class="form-control" id="email" name="email" autocomplete="email"
+                     required aria-describedby="errorEmail">
+              <div id="errorEmail" class="invalid-feedback"></div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="tallerCss" name="taller" value="css" required>
-              <label class="form-check-label" for="tallerCss">Diseño con CSS</label>
+            <div class="col-md-6 mb-3">
+              <label for="email2" class="form-label">Repite el correo *</label>
+              <input type="email" class="form-control" id="email2" autocomplete="email"
+                     required aria-describedby="errorEmail2">
+              <div id="errorEmail2" class="invalid-feedback"></div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="tallerJs" name="taller" value="javascript" required>
-              <label class="form-check-label" for="tallerJs">Eventos con JavaScript</label>
-            </div>
-            <div id="errorTaller" class="invalid-feedback"></div>
           </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="telefono" class="form-label">Teléfono (opcional)</label>
+              <input type="tel" class="form-control" id="telefono" name="telefono" autocomplete="tel"
+                     pattern="[0-9]{9}" title="Introduce nueve cifras sin espacios."
+                     aria-describedby="errorTelefono">
+              <div id="errorTelefono" class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="nacimiento" class="form-label">Fecha de nacimiento *</label>
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" autocomplete="bday"
+                     min="1940-01-01" max="2010-12-31" required
+                     title="Elige una fecha entre el 01/01/1940 y el 31/12/2010."
+                     aria-describedby="errorNacimiento">
+              <div id="errorNacimiento" class="invalid-feedback"></div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="mb-4">
+          <legend class="fs-5 border-bottom pb-1">Tu inscripción</legend>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="modalidad" class="form-label">Modalidad *</label>
+              <select id="modalidad" name="modalidad" class="form-select" required aria-describedby="errorModalidad">
+                <option value="">Elige una modalidad</option>
+                <option value="presencial">Presencial</option>
+                <option value="online">En línea</option>
+              </select>
+              <div id="errorModalidad" class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6 mb-3" role="radiogroup" aria-labelledby="tituloTaller" aria-describedby="errorTaller">
+              <p id="tituloTaller" class="form-label">Taller de la tarde *</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="tallerHtml" name="taller" value="html" required>
+                <label class="form-check-label" for="tallerHtml">HTML accesible</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="tallerCss" name="taller" value="css" required>
+                <label class="form-check-label" for="tallerCss">Diseño con CSS</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="tallerJs" name="taller" value="javascript" required>
+                <label class="form-check-label" for="tallerJs">Eventos con JavaScript</label>
+              </div>
+              <div id="errorTaller" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nivel" class="form-label">Nivel de JavaScript (1 a 10)</label>
+            <output id="valorNivel" for="nivel">5</output>
+            <input type="range" id="nivel" name="nivel" class="form-range" min="1" max="10" value="5"
+                   title="Elige un nivel entre 1 y 10.">
+            <div class="invalid-feedback"></div>
+          </div>
+          <div class="mb-3">
+            <label for="comentarios" class="form-label">Comentarios (opcional)</label>
+            <textarea id="comentarios" name="comentarios" class="form-control" rows="3" maxlength="200"
+                      title="Puedes escribir hasta 200 caracteres." aria-describedby="contador errorComentarios"></textarea>
+            <span id="contador" class="form-text">0 de 200 caracteres</span>
+            <div id="errorComentarios" class="invalid-feedback"></div>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" id="condiciones" name="condiciones" value="si" class="form-check-input"
+                   required aria-describedby="errorCondiciones">
+            <label for="condiciones" class="form-check-label">Acepto las condiciones *</label>
+            <div id="errorCondiciones" class="invalid-feedback"></div>
+          </div>
+        </fieldset>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">Enviar inscripción</button>
+          <button type="reset" class="btn btn-outline-secondary">Borrar</button>
         </div>
-        <div class="mb-3">
-          <label for="nivel" class="form-label">Nivel de JavaScript (1 a 10)</label>
-          <output id="valorNivel" for="nivel">5</output>
-          <input type="range" id="nivel" name="nivel" class="form-range" min="1" max="10" value="5"
-                 title="Elige un nivel entre 1 y 10.">
-          <div class="invalid-feedback"></div>
-        </div>
-        <div class="mb-3">
-          <label for="comentarios" class="form-label">Comentarios (opcional)</label>
-          <textarea id="comentarios" name="comentarios" class="form-control" rows="3" maxlength="200"
-                    title="Puedes escribir hasta 200 caracteres." aria-describedby="contador errorComentarios"></textarea>
-          <span id="contador" class="form-text">0 de 200 caracteres</span>
-          <div id="errorComentarios" class="invalid-feedback"></div>
-        </div>
-        <div class="form-check mb-3">
-          <input type="checkbox" id="condiciones" name="condiciones" value="si" class="form-check-input"
-                 required aria-describedby="errorCondiciones">
-          <label for="condiciones" class="form-check-label">Acepto las condiciones *</label>
-          <div id="errorCondiciones" class="invalid-feedback"></div>
-        </div>
-      </fieldset>
-      <div class="d-flex gap-2">
-        <button type="submit" class="btn btn-primary">Enviar inscripción</button>
-        <button type="reset" class="btn btn-outline-secondary">Borrar</button>
-      </div>
-    </form>
+      </form>
+      <aside class="col-12 col-lg-5">
+        <section class="card card-body">
+          <h2 class="h5">Resumen antes de enviar</h2>
+          <button type="button" id="verResumen" class="btn btn-outline-primary align-self-start">Ver resumen</button>
+          <p id="avisoResumen" class="mt-2 mb-0" role="status"></p>
+          <ul id="resumen" class="list-group list-group-flush"></ul>
+        </section>
+      </aside>
+    </div>
   </main>
   <footer class="border-top py-3">
     <div class="container">Gabriel Cruz Jiménez · DWEC 26/27</div>
