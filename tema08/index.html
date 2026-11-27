@@ -16,6 +16,19 @@
   <main class="container py-4">
     <h1>Jornadas de Desarrollo Web 2026</h1>
     <p>Formulario de inscripción. Los campos con * son obligatorios.</p>
+    <form id="inscripcion" action="recibido.html" method="get">
+      <fieldset class="mb-4">
+        <legend class="fs-5 border-bottom pb-1">Tus datos</legend>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre y apellidos *</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="name"
+                 required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\- ]+"
+                 title="Entre 3 y 60 caracteres. Usa letras, espacios o guiones."
+                 aria-describedby="errorNombre">
+          <div id="errorNombre" class="invalid-feedback"></div>
+        </div>
+      </fieldset>
+    </form>
   </main>
   <footer class="border-top py-3">
     <div class="container">Gabriel Cruz Jiménez · DWEC 26/27</div>
